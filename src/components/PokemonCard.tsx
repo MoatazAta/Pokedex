@@ -1,5 +1,5 @@
 import type { PokemonListItem } from "@/src/types/pokemon";
-import { Image, Pressable, StyleSheet, Text } from "react-native";
+import { Image, Pressable, Text } from "react-native";
 
 function getIdFromUrl(url: string): number {
   const segments = url.replace(/\/$/, "").split("/");
@@ -20,50 +20,19 @@ export function PokemonCard({ item, onPress }: PokemonCardProps) {
 
   return (
     <Pressable
-      style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+      className="flex-1 bg-white rounded-2xl items-center pt-4 pb-3 mb-3 shadow-sm active:opacity-85 active:scale-[0.97]"
       onPress={() => onPress(id)}
     >
-      <Image source={{ uri: getSpriteUrl(id) }} style={styles.image} />
-      <Text style={styles.id}>#{String(id).padStart(3, "0")}</Text>
-      <Text style={styles.name}>{item.name}</Text>
+      <Image
+        source={{ uri: getSpriteUrl(id) }}
+        className="w-[100px] h-[100px]"
+      />
+      <Text className="text-xs font-semibold text-gray-400 mt-2">
+        #{String(id).padStart(3, "0")}
+      </Text>
+      <Text className="text-[15px] font-bold text-gray-800 capitalize mt-0.5">
+        {item.name}
+      </Text>
     </Pressable>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 16,
-    alignItems: "center",
-    paddingTop: 16,
-    paddingBottom: 12,
-    marginBottom: 12,
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  cardPressed: {
-    opacity: 0.85,
-    transform: [{ scale: 0.97 }],
-  },
-  image: {
-    width: 100,
-    height: 100,
-  },
-  id: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: "#9CA3AF",
-    marginTop: 8,
-  },
-  name: {
-    fontSize: 15,
-    fontWeight: "700",
-    color: "#1F2937",
-    textTransform: "capitalize",
-    marginTop: 2,
-  },
-});

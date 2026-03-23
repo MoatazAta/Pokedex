@@ -2,7 +2,7 @@ import { PokemonCard } from "@/src/components/PokemonCard";
 import { usePokemonList } from "@/src/hooks/usePokemonList";
 import { useRouter } from "expo-router";
 import { useCallback, useMemo } from "react";
-import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 
 export function PokemonList() {
   const router = useRouter();
@@ -29,8 +29,8 @@ export function PokemonList() {
 
   if (isLoading) {
     return (
-      <View style={styles.centered}>
-        <ActivityIndicator size="large" color="#DC2626" />
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" colorClassName="accent-red-600" />
       </View>
     );
   }
@@ -40,8 +40,8 @@ export function PokemonList() {
       data={pokemon}
       keyExtractor={(item) => item.name}
       numColumns={2}
-      columnWrapperStyle={styles.row}
-      contentContainerStyle={styles.list}
+      columnWrapperClassName="gap-3"
+      contentContainerClassName="p-3"
       renderItem={({ item }) => (
         <PokemonCard item={item} onPress={handlePress} />
       )}
@@ -51,28 +51,11 @@ export function PokemonList() {
         isFetchingNextPage ? (
           <ActivityIndicator
             size="small"
-            color="#DC2626"
-            style={styles.footer}
+            colorClassName="accent-red-600"
+            className="py-5"
           />
         ) : null
       }
     />
   );
 }
-
-const styles = StyleSheet.create({
-  centered: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  list: {
-    padding: 12,
-  },
-  row: {
-    gap: 12,
-  },
-  footer: {
-    paddingVertical: 20,
-  },
-});

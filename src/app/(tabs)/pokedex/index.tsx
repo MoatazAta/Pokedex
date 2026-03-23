@@ -1,13 +1,9 @@
-import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { PokemonList } from "@/src/components/PokemonList";
+import { View } from "react-native";
 
 export default function PokedexScreen() {
-  const insets = useSafeAreaInsets();
-
   return (
-    <View style={{ flex: 1, backgroundColor: "#F3F4F6", paddingTop: insets.top }}>
+    <View className="flex-1 bg-gray-100 pt-safe">
       <PokemonList />
     </View>
   );
