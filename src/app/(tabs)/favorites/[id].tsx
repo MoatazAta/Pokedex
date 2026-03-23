@@ -1,5 +1,5 @@
 import { PokemonDetailScreen } from "@/src/components/PokemonDetailScreen";
 
-export default function PokedexDetailRoute() {
+export default function FavoriteDetailRoute() {
   return <PokemonDetailScreen />;
 }

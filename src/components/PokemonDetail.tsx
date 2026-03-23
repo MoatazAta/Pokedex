@@ -1,5 +1,7 @@
+import { useFavorites } from "@/src/hooks/useFavorites";
 import type { PokemonDetails } from "@/src/types/pokemon";
-import { Dimensions, Image, ScrollView, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Dimensions, Image, Pressable, ScrollView, Text, View } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
@@ -60,6 +62,8 @@ interface PokemonDetailProps {
 }
 
 export function PokemonDetail({ pokemon }: PokemonDetailProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorited = isFavorite(pokemon.id);
   const artwork = pokemon.sprites.other["official-artwork"].front_default;
   const totalStats = pokemon.stats.reduce((sum, s) => sum + s.base_stat, 0);
   const primaryType = pokemon.types[0]?.type.name ?? "normal";
@@ -74,6 +78,18 @@ export function PokemonDetail({ pokemon }: PokemonDetailProps) {
     >
         {/* Type-colored hero */}
         <View className={`${theme.bg} items-center pb-6 rounded-b-[36px]`}>
+          {/* Favorite button */}
+          <Pressable
+            className="absolute top-4 right-4 z-10 bg-white/20 rounded-full p-2 active:scale-[0.9]"
+            onPress={() => toggleFavorite({ id: pokemon.id, name: pokemon.name })}
+          >
+            <MaterialIcons
+              name={favorited ? "favorite" : "favorite-border"}
+              size={24}
+              color={favorited ? "#FF4D6D" : "white"}
+            />
+          </Pressable>
+
           {/* Name */}
           <Text className="text-[26px] font-bold text-white capitalize text-center mt-5">
             {pokemon.name}
