@@ -16,6 +16,11 @@
       "sourceType": "github",
       "computedHash": "5ca0f3cac36e4fc5f86d59378ca3c049b18119ce20c9b225c07ceb744881b588"
     },
+    "uniwind": {
+      "source": "uni-stack/uniwind",
+      "sourceType": "github",
+      "computedHash": "b10890f7e7cf4c4a683d9cb84df1b02e1d0b4cd7670ffc8369ee5a5740083e49"
+    },
     "web-design-guidelines": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
