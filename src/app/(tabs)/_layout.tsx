@@ -22,7 +22,11 @@ export default function TabLayout() {
         name="favorites"
         options={{
           title: "Favorites",
-          headerShown: false,
+          headerTitleStyle: {
+            fontWeight: "bold",
+            fontSize: 20,
+          },
+          headerTitleAlign: "center",
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="favorite" size={size} color={color} />
           ),

@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 export default function PokedexScreen() {
   return (
-    <View className="flex-1 bg-gray-100 pt-safe">
+    <View className="flex-1 bg-gray-100">
       <PokemonList />
     </View>
   );
