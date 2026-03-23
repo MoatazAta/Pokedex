@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "expo-best-practices": {
+      "source": "ofershap/expo-best-practices",
+      "sourceType": "github",
+      "computedHash": "5c9de354aec265b72ae34809e1c2d2d722a6e12b9e937e24ec869f345cec3507"
+    },
+    "react-native": {
+      "source": "oakoss/agent-skills",
+      "sourceType": "github",
+      "computedHash": "8eeef023600735a9a4fa54817eea371dd487ab92bddcbb8e4b2d67ad3a584e80"
+    },
+    "react-native-expo-skills": {
+      "source": "bitsleuthai/wallet",
+      "sourceType": "github",
+      "computedHash": "5ca0f3cac36e4fc5f86d59378ca3c049b18119ce20c9b225c07ceb744881b588"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a"
+    }
+  }
+}
