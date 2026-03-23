@@ -9,7 +9,7 @@ export function PokemonDetailScreen() {
 
   if (isLoading) {
     return (
-      <View className="flex-1 bg-white justify-center items-center">
+      <View className="flex-1 bg-white dark:bg-gray-950 justify-center items-center">
         <ActivityIndicator size="large" colorClassName="accent-red-600" />
       </View>
     );
@@ -17,8 +17,10 @@ export function PokemonDetailScreen() {
 
   if (isError || !data) {
     return (
-      <View className="flex-1 bg-white justify-center items-center">
-        <Text className="text-gray-500 text-base">Failed to load Pokemon</Text>
+      <View className="flex-1 bg-white dark:bg-gray-950 justify-center items-center">
+        <Text className="text-gray-500 dark:text-gray-400 text-base">
+          Failed to load Pokemon
+        </Text>
       </View>
     );
   }

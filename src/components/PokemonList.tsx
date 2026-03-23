@@ -56,10 +56,10 @@ export function PokemonList() {
       }
       ListEmptyComponent={
         <View className="items-center pt-16 px-8">
-          <Text className="text-base font-semibold text-gray-400">
+          <Text className="text-base font-semibold text-gray-400 dark:text-gray-500">
             No Pokémon found
           </Text>
-          <Text className="text-sm text-gray-300 mt-1">
+          <Text className="text-sm text-gray-300 dark:text-gray-600 mt-1">
             Try a different name
           </Text>
         </View>

@@ -41,13 +41,13 @@ function StatBar({ name, value }: { name: string; value: number }) {
 
   return (
     <View className="flex-row items-center py-[6px]">
-      <Text className="w-14 text-[11px] font-semibold text-gray-400">
+      <Text className="w-14 text-[11px] font-semibold text-gray-400 dark:text-gray-500">
         {meta.label}
       </Text>
-      <Text className="w-8 text-[13px] font-bold text-gray-800 text-right mr-3 tabular-nums">
+      <Text className="w-8 text-[13px] font-bold text-gray-800 dark:text-gray-100 text-right mr-3 tabular-nums">
         {value}
       </Text>
-      <View className="flex-1 h-[4px] bg-gray-100 rounded-full overflow-hidden">
+      <View className="flex-1 h-[4px] bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
         <View
           className={`h-full rounded-full ${meta.color}`}
           style={{ width: `${percentage}%` }}
@@ -72,7 +72,7 @@ export function PokemonDetail({ pokemon }: PokemonDetailProps) {
 
   return (
     <ScrollView
-      className="flex-1 bg-white"
+      className="flex-1 bg-white dark:bg-gray-950"
       contentContainerClassName="pb-12"
       showsVerticalScrollIndicator={false}
     >
@@ -122,21 +122,21 @@ export function PokemonDetail({ pokemon }: PokemonDetailProps) {
       </View>
 
       {/* Weight & Height */}
-      <View className="flex-row mx-5 mt-5 bg-gray-50 rounded-2xl py-4">
+      <View className="flex-row mx-5 mt-5 bg-gray-50 dark:bg-gray-900 rounded-2xl py-4">
         <View className="flex-1 items-center">
-          <Text className="text-[17px] font-bold text-gray-800">
+          <Text className="text-[17px] font-bold text-gray-800 dark:text-gray-100">
             {(pokemon.weight / 10).toFixed(1)} kg
           </Text>
-          <Text className="text-[11px] text-gray-400 font-medium mt-0.5">
+          <Text className="text-[11px] text-gray-400 dark:text-gray-500 font-medium mt-0.5">
             Weight
           </Text>
         </View>
-        <View className="w-px bg-gray-200 my-1" />
+        <View className="w-px bg-gray-200 dark:bg-gray-700 my-1" />
         <View className="flex-1 items-center">
-          <Text className="text-[17px] font-bold text-gray-800">
+          <Text className="text-[17px] font-bold text-gray-800 dark:text-gray-100">
             {(pokemon.height / 10).toFixed(1)} m
           </Text>
-          <Text className="text-[11px] text-gray-400 font-medium mt-0.5">
+          <Text className="text-[11px] text-gray-400 dark:text-gray-500 font-medium mt-0.5">
             Height
           </Text>
         </View>
@@ -144,7 +144,7 @@ export function PokemonDetail({ pokemon }: PokemonDetailProps) {
 
       {/* Abilities */}
       <View className="mx-5 mt-5">
-        <Text className="text-[13px] font-bold text-gray-800 mb-2">
+        <Text className="text-[13px] font-bold text-gray-800 dark:text-gray-100 mb-2">
           Abilities
         </Text>
         <View className="flex-row flex-wrap gap-2">
@@ -153,11 +153,11 @@ export function PokemonDetail({ pokemon }: PokemonDetailProps) {
               key={ability.name}
               className={`px-3 py-[5px] rounded-full ${
                 is_hidden
-                  ? "border border-dashed border-gray-300"
-                  : "bg-gray-100"
+                  ? "border border-dashed border-gray-300 dark:border-gray-600"
+                  : "bg-gray-100 dark:bg-gray-800"
               }`}
             >
-              <Text className="text-[12px] font-medium text-gray-600 capitalize">
+              <Text className="text-[12px] font-medium text-gray-600 dark:text-gray-300 capitalize">
                 {ability.name.replace(/-/g, " ")}
                 {is_hidden ? " (hidden)" : ""}
               </Text>
@@ -168,17 +168,17 @@ export function PokemonDetail({ pokemon }: PokemonDetailProps) {
 
       {/* Base Stats */}
       <View className="mx-5 mt-5">
-        <Text className="text-[13px] font-bold text-gray-800 mb-1">
+        <Text className="text-[13px] font-bold text-gray-800 dark:text-gray-100 mb-1">
           Base Stats
         </Text>
         {pokemon.stats.map(({ stat, base_stat }) => (
           <StatBar key={stat.name} name={stat.name} value={base_stat} />
         ))}
-        <View className="border-t border-gray-100 mt-1 pt-[6px] flex-row items-center">
-          <Text className="w-14 text-[11px] font-semibold text-gray-400">
+        <View className="border-t border-gray-100 dark:border-gray-800 mt-1 pt-[6px] flex-row items-center">
+          <Text className="w-14 text-[11px] font-semibold text-gray-400 dark:text-gray-500">
             TOTAL
           </Text>
-          <Text className="w-8 text-[13px] font-extrabold text-gray-900 text-right mr-3 tabular-nums">
+          <Text className="w-8 text-[13px] font-extrabold text-gray-900 dark:text-white text-right mr-3 tabular-nums">
             {totalStats}
           </Text>
         </View>
