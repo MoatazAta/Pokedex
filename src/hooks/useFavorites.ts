@@ -1,4 +1,4 @@
-import type { FavoritePokemon } from "@/src/lib/storage";
+import type { FavoritePokemon } from "@/src/types/pokemon";
 import { useCallback, useMemo } from "react";
 import { useMMKVString } from "react-native-mmkv";
 

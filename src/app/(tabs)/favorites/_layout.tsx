@@ -1,14 +1,6 @@
 import { ThemeToggleHeaderRight } from "@/src/components/ThemeToggle";
 import { Stack } from "expo-router";
 
-const headerOptions = {
-  headerTitleAlign: "center" as const,
-  headerStyle: { backgroundColor: "#DC2626" },
-  headerTintColor: "#fff",
-  headerTitleStyle: { fontWeight: "bold" as const },
-  headerShadowVisible: false,
-};
-
 export default function FavoritesLayout() {
   return (
     <Stack>
@@ -16,15 +8,12 @@ export default function FavoritesLayout() {
         name="index"
         options={{
           title: "Favorites",
-          ...headerOptions,
+          headerTitleAlign: "center",
+          headerStyle: { backgroundColor: "#DC2626" },
+          headerTintColor: "#fff",
+          headerTitleStyle: { fontWeight: "bold" },
+          headerShadowVisible: false,
           headerRight: () => <ThemeToggleHeaderRight />,
-        }}
-      />
-      <Stack.Screen
-        name="[id]"
-        options={{
-          title: "Details",
-          ...headerOptions,
         }}
       />
     </Stack>
