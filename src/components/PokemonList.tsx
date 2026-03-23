@@ -1,14 +1,14 @@
 import { usePokemonList } from "@/src/hooks/usePokemonList";
 import { useRouter } from "expo-router";
 import { useCallback, useMemo, useState } from "react";
-import { ActivityIndicator, FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, RefreshControl, Text, View } from "react-native";
 import { PokemonCard } from "./PokemonCard";
 import { SearchBar } from "./SearchBar";
 
 export function PokemonList() {
   const router = useRouter();
   const [search, setSearch] = useState("");
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, refetch, isRefetching } =
     usePokemonList();
 
   const pokemon = useMemo(
@@ -24,7 +24,7 @@ export function PokemonList() {
 
   const handlePress = useCallback(
     (id: number) => {
-      router.push(`/(tabs)/pokedex/${id}`);
+      router.push(`/pokemon/${id}`);
     },
     [router],
   );
@@ -51,6 +51,9 @@ export function PokemonList() {
       columnWrapperClassName="gap-3"
       contentContainerClassName="px-3 pb-3"
       keyboardShouldPersistTaps="handled"
+      refreshControl={
+        <RefreshControl refreshing={isRefetching} onRefresh={refetch} tintColor="#DC2626" colors={["#DC2626"]} />
+      }
       ListHeaderComponent={
         <SearchBar value={search} onChangeText={setSearch} />
       }

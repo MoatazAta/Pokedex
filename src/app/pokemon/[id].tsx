@@ -1,9 +1,9 @@
+import { PokemonDetail } from "@/src/components/PokemonDetail";
 import { usePokemonDetails } from "@/src/hooks/usePokemonDetails";
 import { useLocalSearchParams } from "expo-router";
 import { ActivityIndicator, Text, View } from "react-native";
-import { PokemonDetail } from "./PokemonDetail";
 
-export function PokemonDetailScreen() {
+export default function PokemonModal() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data, isLoading, isError } = usePokemonDetails(Number(id));
 

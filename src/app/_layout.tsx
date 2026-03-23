@@ -13,6 +13,18 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="pokemon/[id]"
+          options={{
+            presentation: "modal",
+            headerTitle: "Details",
+            headerTitleAlign: "center",
+            headerStyle: { backgroundColor: "#DC2626" },
+            headerTintColor: "#FFFFFF",
+            headerTitleStyle: { fontWeight: "600" },
+            headerShadowVisible: false,
+          }}
+        />
       </Stack>
     </QueryClientProvider>
   );

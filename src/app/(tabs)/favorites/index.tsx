@@ -14,7 +14,7 @@ export default function FavoritesScreen() {
 
   const handlePress = useCallback(
     (id: number) => {
-      router.push(`/(tabs)/favorites/${id}`);
+      router.push(`/pokemon/${id}`);
     },
     [router],
   );
