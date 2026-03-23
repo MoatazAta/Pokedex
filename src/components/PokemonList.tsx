@@ -1,11 +1,13 @@
-import { PokemonCard } from "@/src/components/PokemonCard";
 import { usePokemonList } from "@/src/hooks/usePokemonList";
 import { useRouter } from "expo-router";
-import { useCallback, useMemo } from "react";
-import { ActivityIndicator, FlatList, View } from "react-native";
+import { useCallback, useMemo, useState } from "react";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
+import { PokemonCard } from "./PokemonCard";
+import { SearchBar } from "./SearchBar";
 
 export function PokemonList() {
   const router = useRouter();
+  const [search, setSearch] = useState("");
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     usePokemonList();
 
@@ -13,6 +15,12 @@ export function PokemonList() {
     () => data?.pages.flatMap((page) => page.results) ?? [],
     [data],
   );
+
+  const filtered = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return pokemon;
+    return pokemon.filter((p) => p.name.includes(query));
+  }, [pokemon, search]);
 
   const handlePress = useCallback(
     (id: number) => {
@@ -37,11 +45,25 @@ export function PokemonList() {
 
   return (
     <FlatList
-      data={pokemon}
+      data={filtered}
       keyExtractor={(item) => item.name}
       numColumns={2}
       columnWrapperClassName="gap-3"
-      contentContainerClassName="p-3"
+      contentContainerClassName="px-3 pb-3"
+      keyboardShouldPersistTaps="handled"
+      ListHeaderComponent={
+        <SearchBar value={search} onChangeText={setSearch} />
+      }
+      ListEmptyComponent={
+        <View className="items-center pt-16 px-8">
+          <Text className="text-base font-semibold text-gray-400">
+            No Pokémon found
+          </Text>
+          <Text className="text-sm text-gray-300 mt-1">
+            Try a different name
+          </Text>
+        </View>
+      }
       renderItem={({ item }) => (
         <PokemonCard item={item} onPress={handlePress} />
       )}
