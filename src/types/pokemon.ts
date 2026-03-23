@@ -58,3 +58,8 @@ export interface PokemonDetails {
   types: PokemonType[];
   abilities: PokemonAbility[];
 }
+
+export interface FavoritePokemon {
+  id: number;
+  name: string;
+}
